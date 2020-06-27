@@ -2,6 +2,8 @@
 
 In a nutshell this library allows to code with 🐢 Turtle Graphics in JavaScript.
 
+![](img/turtle_gfx.png)
+
 TurtleGFX is add-on for [p5.js](https://p5js.org/) library.
 TurtleGFX extends the JavaScript based p5.js library with  Turtle Graphics drawing primitives.
 
@@ -23,15 +25,18 @@ The API has been designed to be closely compatible with popular Turtle Graphics 
 
 For API reference please consult the [turtlegfx.js](lib/turtlegfx.js) code.
 
+# Source code
+
+The source code of this library is contained in file [turtlegfx.js](lib/turtlegfx.js). This is the only file you need in your p5.js project to enjoy Turtle Graphics.
+
 # Examples
 
 There are several examples included with this library. Please refer to the source code of `ex-____.html` files for details.
 
 The online version of these examples is available at:
-[https://codeguppyprograms.github.io/TurtleGFX/index.html](https://codeguppyprograms.github.io/TurtleGFX/index.html)
+[https://codeguppyprograms.github.io/TurtleGFX/](https://codeguppyprograms.github.io/TurtleGFX/)
 
-![](img/examples.png)
-
+[![](img/examples.png)](https://codeguppyprograms.github.io/TurtleGFX/)
 
 # License
 
