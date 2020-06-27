@@ -1,0 +1,101 @@
+<script src="lib/p5.min.js"></script>
+<script src="lib/turtlegfx.js"></script>
+
+<script>
+
+const shapePerim = 400;
+const arShapes = [];
+
+
+function setup()
+{
+    createCanvas(800, 600);
+
+    colorMode(HSB);
+    background('WhiteSmoke');
+}
+
+
+function draw()
+{
+    clear();
+    
+    display();
+    update();
+}
+
+function pushShape()
+{
+    var sides = floor(random(3, 10));
+    var clr = color(random(360), 100, 100);
+    var x = random(0, width - 100);
+    var y = random(-100, 0);
+    var angle = 0;
+    
+    arShapes.push({sides : sides, color : clr, x : x, y : y, angle : angle});
+}
+
+function display()
+{
+    for(var shape of arShapes)
+    {
+        setposition(shape.x, shape.y);
+        setheading(shape.angle);
+        
+        pencolor(shape.color);
+        pensize(20);
+        
+        drawShape(shapePerim / shape.sides, shape.sides);
+    }
+}
+
+function update()
+{
+    var falling = 0;
+    
+    for(var i = arShapes.length - 1; i >= 0; i--)
+    {
+        var shape = arShapes[i];
+        
+        // Update falling shapes
+        if (shape.y < height - 100)
+        {
+            falling++;
+            shape.y += shape.sides;
+            shape.angle++;
+        }
+        
+        // If total sprites are > 10, update ground shapes
+        else if(arShapes.length > 10)
+        {
+            shape.y++;
+        }
+        
+        // Remove shapes outside of screen
+        if (shape.y >= height + 20)
+        {
+            arShapes.splice(i, 1);
+        }
+    }        
+    
+    if (falling < 3)
+    {
+        pushShape();
+    }
+}
+
+function drawShape(sideLen, noSides)
+{
+    if (noSides < 3)
+        return;
+    
+    var angle = 360 / noSides;
+
+    for(var i = 0; i < noSides; i++)
+    {
+        forward(sideLen);
+        right(angle);
+    }
+}
+
+</script>

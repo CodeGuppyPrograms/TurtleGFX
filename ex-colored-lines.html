@@ -1,0 +1,31 @@
+<script src="lib/p5.min.js"></script>
+<script src="lib/turtlegfx.js"></script>
+
+<script>
+
+function setup()
+{
+    createCanvas(800, 600);
+
+    // Based on Turle 🐢 example from:
+    // https://juliagraphics.github.io/Luxor.jl/stable/turtle/
+    background("midnightblue");
+    colorMode(HSB);
+    pensize(1.5);
+
+    var n = 5;
+    var h = 179;
+
+    for(var i = 1; i <= 400; i++)
+    {
+        var clr = color(h++ % 360, 100, 100)
+        pencolor(clr);
+        
+        forward(n);
+        right(89.5);
+        n += 0.75;
+    }
+}
+
+
+</script>

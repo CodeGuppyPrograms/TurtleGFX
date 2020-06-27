@@ -1,0 +1,57 @@
+<script src="lib/p5.min.js"></script>
+<script src="lib/turtlegfx.js"></script>
+
+<script>
+
+var h = 0;
+
+function setup()
+{
+    createCanvas(800, 600);
+
+    // Based on Turle 🐢 example from:
+    // https://juliagraphics.github.io/Luxor.jl/stable/turtle/
+
+    colorMode(HSB);
+    background("black");
+
+    // You can use the "default" turtle or define a new turtle...
+    // In this example we are using just one turtle... but you can have multiple turtles on screen
+    var t = createTurtle();
+    t.setposition(100, 590);
+    t.pensize(2);
+
+    hilbert(t,
+            6,  // level
+            90, // turn angle, in degrees
+            9   // steplength
+            );
+}
+
+
+function hilbert(t, level, angle, lengthstep)
+{
+    if (level === 0)
+        return;
+
+    var clr = color(h+=0.1 % 360, 100, 100);
+    t.pencolor(clr);
+
+    t.right(angle);
+    hilbert(t, level-1, -angle, lengthstep);
+
+    t.forward(lengthstep);
+    t.left(angle);
+    hilbert(t, level-1, angle, lengthstep);
+
+    t.forward(lengthstep);
+    hilbert(t, level-1, angle, lengthstep);
+
+    t.left(angle);
+    t.forward(lengthstep);
+    hilbert(t, level-1, -angle, lengthstep);
+
+    t.right(angle)
+}
+
+</script>

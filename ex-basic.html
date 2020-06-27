@@ -1,0 +1,27 @@
+<script src="lib/p5.min.js"></script>
+<script src="lib/turtlegfx.js"></script>
+
+<script>
+
+// Turtle example translated from LOGO from:
+// http://fmslogo.sourceforge.net/workshop/
+
+function setup()
+{
+    createCanvas(800, 600);
+
+    spiral();
+}
+
+function spiral()
+{
+    pencolor("teal");
+    
+    for(var i = 0; i < 100; i++)
+    {
+        forward(i * 2);
+        right(90);
+    }
+}
+
+</script>

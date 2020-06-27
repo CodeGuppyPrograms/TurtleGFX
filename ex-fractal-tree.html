@@ -1,0 +1,54 @@
+<script src="lib/p5.min.js"></script>
+<script src="lib/turtlegfx.js"></script>
+
+<script>
+
+function setup()
+{
+    createCanvas(800, 600);
+}
+
+function draw()
+{
+    clear();
+
+    setposition(400, 500);
+    plant(150);
+}
+
+function plant(size)
+{
+    if (size < 1)
+        return;
+    
+    pensize( map(size, 100, 1, 10, 0.1) );
+    pencolor( size > 10 ? "black" : "green" );
+    
+    forward(size);
+    
+    var [x, y] = position();
+    var h = heading();
+    
+    var nextSign = 1;
+    
+    repeat(random([2,3]), () => {
+        var angle = nextSign * random(10, 45); 
+        nextSign *= -1;
+        
+        right(angle);
+        plant(size * random(0.5, 0.7));
+        
+        setposition(x, y);
+        setheading(h);
+    });
+}
+
+function repeat(n, fn)
+{
+    for(var i = 0; i < n; i++)    
+    {
+        fn(i);
+    }
+}
+
+</script>

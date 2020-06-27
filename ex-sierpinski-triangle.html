@@ -1,0 +1,74 @@
+<script src="lib/p5.min.js"></script>
+<script src="lib/turtlegfx.js"></script>
+
+<script>
+
+// code based on: https://codereview.stackexchange.com/questions/225847/sierpinski-turtle-triangle
+var colors = ["red", "green", "blue"];
+var ar = [];
+var curr = 0;
+
+
+function setup()
+{
+    createCanvas(800, 600);
+
+    generate();
+}
+
+function draw()
+{
+    if (curr >= ar.length)
+        return;
+
+    var [p, h, l] = ar[curr++];
+    
+    setposition(...p);
+    setheading(h);
+    
+    draw_triangle(l);
+}
+
+function draw_triangle(length)
+{
+    pencolor(colors[curr % 3]);
+
+    for(var side = 0; side < 3; side++)
+    {
+        forward(length);
+        right(120);
+    }
+}
+
+function push_triangle(length)
+{
+    ar.push( [position(), heading(), length] );
+}
+
+function draw_fractal_triangle(length, depth)
+{
+    if (depth == 1)
+    {
+        push_triangle(length);
+    }
+    else
+    {
+        for(var i = 0; i < 3; i++)
+        {
+            draw_fractal_triangle(length/2, depth-1);
+            forward(length);
+            right(120);
+        }
+    }
+}
+
+function generate()
+{
+    penup();
+    setposition(300, 500);
+    draw_fractal_triangle(400, 6);
+    pendown();
+}
+
+
+</script>

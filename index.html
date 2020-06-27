@@ -1,0 +1,64 @@
+<html>
+<head>
+    <title>TurtleGFX Examples</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+    p {
+        font-size: 14px;
+    }
+
+    .navbar > a:link, .navbar > a:visited {
+        background-color: white;
+        color: black;
+        border: 2px solid teal;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        max-width: 140px;
+        margin: 4px;
+    }
+
+    .navbar > a:hover, .navbar > a:active {
+        background-color: teal;
+        color: white;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        height: 88%;
+    }
+
+    .navbar {
+        background-color: whitesmoke;
+        padding: 4px;
+        width: 180px;
+    }
+
+    .frame {
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+    </style>
+</head>
+<body>
+    <h1>TurtleGFX Examples</h1>
+    <div class="container">
+        <div class="navbar">
+            <a href="ex-basic.html" target="frmFrame">Basic</a>
+            <a href="ex-fractal-tree.html" target="frmFrame">Fractal tree</a>
+            <a href="ex-colored-lines.html" target="frmFrame">Colored lines</a>
+            <a href="ex-hilbert-curve.html" target="frmFrame">Hilbert curve</a>
+            <a href="ex-polygons.html" target="frmFrame">Polygons</a>
+            <a href="ex-sierpinski-triangle.html" target="frmFrame">Sierpiński triangle</a>
+        </div>
+        <iframe class="frame" name="frmFrame" src="ex-fractal-tree.html"></iframe>
+    </div>
+    <div>
+        <p>These JavaScript examples are built using the free <a href="https://p5js.org/">p5.js</a> and <a href="https://github.com/codeguppyprograms/TurtleGFX">TurtleGFX</a> libraries (<a href="https://github.com/codeguppyprograms/TurtleGFX">source code</a>). For more examples please also visit <a href="https://codeguppy.com">codeguppy.com</a></p>
+    </div>
+</body>
+</html>
