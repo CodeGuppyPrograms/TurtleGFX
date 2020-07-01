@@ -71,7 +71,10 @@
         var frmProgram = document.getElementById("frmProgram");
         var txtCode = document.getElementById("txtCode");
         
-        window.onresize = function() {
+        window.onresize = resizeUI;
+        window.onload = resizeUI;
+
+        function resizeUI() {
             txtCode.style.display = document.body.clientWidth > 1366 ? "block" : "none";
         }
 
