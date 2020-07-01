@@ -42,6 +42,11 @@
         height: 100%;
         border: 0;
     }
+
+    .code {
+        min-width : 400px;
+        border: 0px;
+    }
     </style>
 </head>
 <body>
@@ -55,10 +60,51 @@
             <a href="ex-polygons.html" target="frmFrame">Polygons</a>
             <a href="ex-sierpinski-triangle.html" target="frmFrame">Sierpiński triangle</a>
         </div>
-        <iframe class="frame" name="frmFrame" src="ex-fractal-tree.html"></iframe>
+        <iframe id="frmProgram" class="frame" name="frmFrame" src="ex-fractal-tree.html"></iframe>
+        <textarea id="txtCode" class="code"></textarea>
     </div>
     <div>
         <p>These JavaScript examples are built using the free <a href="https://p5js.org/">p5.js</a> and <a href="https://github.com/codeguppyprograms/TurtleGFX">TurtleGFX</a> libraries (<a href="https://github.com/codeguppyprograms/TurtleGFX">source code</a>). For more examples please also visit <a href="https://codeguppy.com">codeguppy.com</a></p>
     </div>
+
+    <script>
+        var frmProgram = document.getElementById("frmProgram");
+        var txtCode = document.getElementById("txtCode");
+        
+        window.onresize = function() {
+            txtCode.style.display = document.body.clientWidth > 1366 ? "block" : "none";
+        }
+
+        frmProgram.onload = function() {
+            try
+            {
+                var code = frmProgram.contentWindow.document.documentElement.innerHTML;
+                code = findCode(code);
+            
+                txtCode.value = code;
+            }
+            catch(e)
+            {
+                txtCode.value = "";
+            }
+        }
+
+        function findCode(txt)
+        {
+            var startAt = 0;
+            var arTexts = [];
+            
+            var index = txt.indexOf("<" + "script>", startAt);
+            if (index < 0)
+                return "";
+            
+            var index2 = txt.indexOf("<" + "/script>", index + 8);
+            if (index2 < 0)
+                index2 = txt.length;
+            
+            var txtCode = txt.substring(index + 8, index2);
+            return txtCode.trim();
+        }
+    </script>
 </body>
 </html>
